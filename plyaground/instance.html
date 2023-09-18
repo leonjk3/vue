@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">{{ message }}</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            //app id를 가진 태그에서 Vue를 사용하겠단 뜻. 무조건 명시되어있어야 한다.
+            el: '#app',
+            data : {
+                message : 'hi'
+            }
+        });
+        
+    </script>
+    
+</body>
+</html>
