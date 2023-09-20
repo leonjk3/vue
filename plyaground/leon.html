@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-body></app-body>
+        <app-body-id></app-body-id>
+        <app-body-pw></app-body-pw>
+        <app-body-signin></app-body-signin>
+        <app-footer></app-footer>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var appHeader={
+        template:'<header>개인 프로젝트</header>'
+    };
+    var appBody={
+        template:'<div>이러이러한 프로젝트를 하겠다.</div>'
+    };
+    var appId={
+        template: '<input type="text" id="id"></input>'
+    };
+    var appPw={
+        template: '<input type="password" id="pw"></input>'
+    };
+    var appSign={
+        template: '<button>로그인</button>'
+    };
+    var appFooter={
+        template:'<footer>contact Me.</footer>'
+    };
+
+    new Vue({
+        el:'#app',
+        data:{
+            id:'leonjk3',
+            pw:'dlworms123!'
+        },
+        components:{
+            'app-header':appHeader,
+            'app-body':appBody,
+            'app-body-id':appId,
+            'app-body-pw':appPw,
+            'app-body-signin':appSign,
+            'app-footer':appFooter
+        }
+    });
+</script>
+</html>
