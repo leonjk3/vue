@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <!--router-link태그를 사용하면 <a>태그를 알아서 그려준다-->
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
+        <!--특정 url에서 component가 뿌려지는 영역-->
+        <router-view></router-view>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>  
+    <script>
+        const loginComponent = {
+            template: '<div>login</div>'
+        };
+        const mainComponent = {
+            template: '<div>home</div>'
+        };
+
+        const routes = [
+            {path:'/login', component:loginComponent},
+            {path:'/main', component:mainComponent}
+        ]
+
+        var router = VueRouter.createRouter({
+            //이 설정은 서버쪽에도 셋팅을 해주어야만 한다.
+            //history: VueRouter.createWebHistory(), 
+            history: VueRouter.createWebHashHistory(),
+            routes
+        });
+
+        var app = Vue.createApp();
+        //태그 mount보다 router use를 먼저하자.
+        app.use(router);
+        app.mount('#app');        
+    </script>
+</body>
+</html>

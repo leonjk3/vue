@@ -8,49 +8,68 @@
 <body>
     <div id="app">
         <app-header></app-header>
-        <app-body></app-body>
-        <app-body-id></app-body-id>
-        <app-body-pw></app-body-pw>
-        <app-body-signin></app-body-signin>
+        <app-content></app-content>
+        <br>
+        <app-id></app-id>
+        <app-pw></app-pw>
+        <app-signin v-on:click="signIn(id, pw)"></app-signin>
+        <br>
         <app-footer></app-footer>
     </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        var appHeader = {
+            template:'<h1>이재근 페이지</h1>'
+        }
+        var appContent = {
+            template:'<table><tr><th>헤더1</th><td>내용1</td></tr><tr><th>헤더2</th><td>내용2</td></tr></table>'
+        }
+        var appId = {
+            template:'<input type=text id=id></input>'
+        }
+        var appPw = {
+            template:'<input type=password id=pw></input>'
+        }
+        var appSignIn = {
+            template:'<button>로그인</button>'
+        }
+        var appFooter = {
+            template:'<span>contact Me</span>'
+        }
+
+        var app = Vue.createApp({
+            components:{
+                'app-header':appHeader,
+                'app-content':appContent,
+                'app-id':appId,
+                'app-pw':appPw,
+                'app-signin':appSignIn,
+                'app-footer':appFooter
+            },
+            methods: {
+                signIn : function(id, pw){
+                    if(id == this.id){
+                        if(pw == this.pw){
+                            alert(this.success);
+                            return;
+                        }
+                    }
+                    alert(this.fail);
+                    return false;
+                }
+            },
+            data(){
+                return {
+                    id:'leonjk3',
+                    pw:'dlworms123!',
+                    success:'로그인 되었습니다',
+                    fail:'로그인에 실패했습니다.'
+                }
+                
+            }
+        }).mount('#app');
+    </script>
     
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script>
-    var appHeader={
-        template:'<header>개인 프로젝트</header>'
-    };
-    var appBody={
-        template:'<div>이러이러한 프로젝트를 하겠다.</div>'
-    };
-    var appId={
-        template: '<input type="text" id="id"></input>'
-    };
-    var appPw={
-        template: '<input type="password" id="pw"></input>'
-    };
-    var appSign={
-        template: '<button>로그인</button>'
-    };
-    var appFooter={
-        template:'<footer>contact Me.</footer>'
-    };
-
-    new Vue({
-        el:'#app',
-        data:{
-            id:'leonjk3',
-            pw:'dlworms123!'
-        },
-        components:{
-            'app-header':appHeader,
-            'app-body':appBody,
-            'app-body-id':appId,
-            'app-body-pw':appPw,
-            'app-body-signin':appSign,
-            'app-footer':appFooter
-        }
-    });
-</script>
 </html>
