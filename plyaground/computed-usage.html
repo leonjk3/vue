@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .warning {
+    color: red;
+  }
+  .blue-text{
+    color: blue;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <p v-bind:class="errorTextColor">Hello</p> <!-- isError가 참일때만 warning이 들어간다.-->
+  </div>
+  
+  <script src="https://unpkg.com/vue@3"></script>
+  <script>
+    Vue.createApp({
+      data(){
+        return{
+            //cname: 'blue-text',
+            isError: true
+        }
+      },
+      computed:{
+        errorTextColor(){
+            return this.isError ? 'warning' : null;
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>

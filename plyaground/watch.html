@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{num}}
+        <button v-on:click="addNum">increase</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                    num : 10
+                }
+            },
+            watch:{
+                num: function(){
+                    this.logText();
+                }
+            },
+            methods:{
+                addNum(){
+                    this.num +=1;
+                },
+                logText(){
+                    console.log('changed');
+                }
+            }
+        });
+        vm.mount('#app');
+    </script>
+</body>
+</html>
