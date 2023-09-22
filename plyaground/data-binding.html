@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="uuid" v-bind:class="className">{{num}}</p>
+        <p>{{doubleNum}}</p>
+        <button v-on:click="login()">login</button>
+        <div v-if="loading">
+            Loading...
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <div v-show="loading">
+            Loading...
+        </div>
+
+        <br>
+        <br>
+        <input type="text" v-model="text">
+        <p>{{text}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        var vm = Vue.createApp({
+            data(){
+                return{
+                    num:10,
+                    uuid: 'abc1234',
+                    className: 'text-blue',
+                    loading:true,
+                    text:''
+                }
+            },
+            computed:{
+                doubleNum: function(){
+                    return this.num * 2;
+                }
+            }
+        });
+        vm.mount('#app');
+    </script>
+    
+</body>
+</html>
