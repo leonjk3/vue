@@ -1,28 +1,32 @@
+<!-- template 하위에는 하나의 element만 있어야한다.-->
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <app-header v-bind:propsdata="str" v-on:renew="renewStr"></app-header>
+    {{ msg }}
   </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import AppHeader from './components/AppHeader.vue';
+  export default {
+    data(){
+      return {
+        msg : 'hi',
+        str : '으랏차차차차!!'
+      }
+    },
+    components:{
+      'app-header':AppHeader
+    },
+    methods:{
+      renewStr(){
+        this.str = '데이터 바뀜';
+      }
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scoped>
+
 </style>
